@@ -1,14 +1,13 @@
 import React, { use, useState } from 'react'
 
-const Login = () => {
-
+const Login = ({handleLogin}) => {
+    
     const [email, setemail] = useState('')
     const [password, setpassword] = useState('')
 
     const submitHandler = (e) => {
         e.preventDefault()
-         console.log("Email is: ", email);
-        console.log("Password is: ", password);
+        handleLogin(email, password)
         setemail("")
         setpassword("")
          
@@ -16,12 +15,11 @@ const Login = () => {
 
     return (
         <div className='flex h-screen w-full items-center justify-center'>
-            <div className='border-2 border-red-500 p-8 rounded-lg shadow-xs shadow-white'>
+            <div className='border-2 border-red-500 p-2 rounded-lg shadow-xs shadow-white'>
                 <h1 className='text-center p-4 text-2xl font-bold mb-2'>Login Page</h1>
                 <form
                     onSubmit={(e) => {
-                        submitHandler(e)
-                        
+                        submitHandler(e) 
                      }}
                     className='flex flex-col items-center justify-center'>
                     <input
